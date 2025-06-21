@@ -1,0 +1,117 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    height: 100vh;
+    background: #ffe4ec;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  .container {
+    position: relative;
+  }
+  
+  .envelope {
+    position: relative;
+    width: 300px;
+    height: 200px;
+    perspective: 1000px;
+  }
+  
+  .flap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60%;
+    background: #d81b60;
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+    transform-origin: top center;
+    transition: transform 0.8s ease;
+    z-index: 3;
+    cursor: pointer;
+    border-radius: 8px 8px 0 0;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  }
+  
+  .envelope.open .flap {
+    transform: rotateX(-180deg);
+    z-index: 0;
+  }
+  
+  .pocket {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background: #f8bbd0;
+    z-index: 2;
+    border-top: 2px solid #d81b60;
+    border-radius: 0 0 8px 8px;
+    overflow: hidden;
+  }
+  
+  .paper {
+    position: absolute;
+    bottom: 0;
+    left: 5%;
+    width: 90%;
+    height: 75%;
+    background: white;
+    border-radius: 8px;
+    transform: translateY(100%); /* escondida completamente */
+    transition: transform 1s ease, z-index 0.5s;
+    z-index: 2;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    text-align: center;
+    font-weight: bold;
+    color: #d81b60;
+    opacity: 0; /* invisível até o envelope abrir */
+  }
+  
+  .envelope.open .paper {
+    transform: translateY(-20%); /* sai parcialmente para fora do envelope */
+    z-index: 4;
+    opacity: 1; /* visível apenas depois de abrir */
+  }  
+  
+  #hearts-container {
+    position: absolute;
+    bottom: 30px;
+    left: 0;
+    width: 100%;
+    height: 0;
+    pointer-events: none;
+    z-index: 1;
+    overflow: visible;
+  }
+  
+  .heart {
+    position: absolute;
+    bottom: 0;
+    font-size: 30px;
+    animation: floatUp 3s ease forwards;
+  }
+  
+  @keyframes floatUp {
+    0% {
+      transform: translateY(0) scale(1);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-250px) scale(1.5);
+      opacity: 0;
+    }
+  }
+  

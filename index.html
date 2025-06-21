@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Para Manu</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div class="container">
+  <div id="hearts-container"></div>
+
+  <div class="envelope" id="envelope">
+    <div class="flap" id="flap"></div>
+    <div class="pocket" id="pocket">
+      <div class="paper" id="paper">Clique para abrir 💌</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const flap = document.getElementById('flap');
+  const envelope = document.getElementById('envelope');
+  const heartsContainer = document.getElementById('hearts-container');
+  const paper = document.getElementById('paper');
+
+  let flapClicked = false;
+
+  flap.addEventListener('click', () => {
+    if (!flapClicked) {
+      flapClicked = true;
+      envelope.classList.add('open');
+      soltarCoracoes();
+    }
+  });
+
+  paper.addEventListener('click', () => {
+    if (flapClicked) {
+      window.location.href = 'carta/letter.html';
+    }
+  });
+
+  function soltarCoracoes() {
+    for(let i = 0; i < 15; i++) {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.innerText = '❤️';
+      heart.style.left = 20 + Math.random() * 60 + '%';
+      const delay = Math.random() * 0.5;
+      heart.style.animation = `floatUp 3s ease forwards ${delay}s`;
+      heartsContainer.appendChild(heart);
+      setTimeout(() => heart.remove(), 4000);
+    }
+  }
+</script>
+
+</body>
+</html>

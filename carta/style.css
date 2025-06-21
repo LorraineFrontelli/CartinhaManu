@@ -1,0 +1,47 @@
+body {
+    background: #ffe4ec;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+
+  .letter-opened {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    max-width: 400px;
+    padding: 50px;
+    text-align: center;
+    color: #d81b60;
+    margin: 20px;
+  }
+  
+
+  .letter-opened h1 {
+    margin-bottom: 15px;
+    font-size: 24px;
+  }
+
+  .letter-opened p {
+    color: #444;
+  }
+
+  .letter-opened {
+    animation: abrirCarta 1.2s ease both;
+  }
+  
+  @keyframes abrirCarta {
+    0% {
+      opacity: 0;
+      transform: translateY(50px) scale(0.95);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+  
